@@ -1,4 +1,3 @@
--- Done
 CREATE TABLE IF NOT EXISTS customer(
     id SERIAL PRIMARY KEY,
     first_name TEXT,
@@ -9,14 +8,12 @@ CREATE TABLE IF NOT EXISTS customer(
     phone_number TEXT
 );
 
--- Done
 CREATE TABLE IF NOT EXISTS category(
     id SERIAL PRIMARY KEY,
     name TEXT,
     customer_id INTEGER NOT NULL REFERENCES customer(id)
     );
 
--- Done
 CREATE TABLE IF NOT EXISTS product(
     id SERIAL PRIMARY KEY,
     SKU TEXT,
@@ -26,7 +23,6 @@ CREATE TABLE IF NOT EXISTS product(
     category_id INTEGER REFERENCES category(id)
 );
 
--- Done
 CREATE TABLE IF NOT EXISTS cart(
     id SERIAL,
     quantity INTEGER,
@@ -35,7 +31,6 @@ CREATE TABLE IF NOT EXISTS cart(
     PRIMARY KEY(id, customer_id)
 );
 
--- Done
 CREATE TABLE IF NOT EXISTS wishlist(
     id SERIAL,
     customer_id INTEGER NOT NULL REFERENCES customer(id),
@@ -43,7 +38,6 @@ CREATE TABLE IF NOT EXISTS wishlist(
     PRIMARY KEY(id, customer_id)
 );
 
--- Done
 CREATE TABLE IF NOT EXISTS payment(
     id SERIAL PRIMARY KEY,
     payment_date DATE,
@@ -52,7 +46,6 @@ CREATE TABLE IF NOT EXISTS payment(
     customer_id INTEGER NOT NULL REFERENCES customer(id)
 );
 
--- Done
 CREATE TABLE IF NOT EXISTS shipment(
     id SERIAL PRIMARY KEY,
     shipment_date DATE,
@@ -64,7 +57,6 @@ CREATE TABLE IF NOT EXISTS shipment(
     customer_id INTEGER NOT NULL REFERENCES customer(id)
 );
 
--- Done
 CREATE TABLE IF NOT EXISTS orders(
     id SERIAL PRIMARY KEY,
     order_date DATE,
@@ -74,8 +66,6 @@ CREATE TABLE IF NOT EXISTS orders(
     shipment_id INTEGER NOT NULL REFERENCES shipment(id)
 );
 
-
--- Done
 CREATE TABLE IF NOT EXISTS order_item(
     id SERIAL,
     quantity INTEGER,
